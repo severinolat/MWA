@@ -15,11 +15,11 @@ const _addFood = function(req, res, country){
 
     country.save(function(err, updatedCountry){
         const response = {
-            status:204,
+            status:process.env.SUCCESS,
             message : updatedCountry
         }
         if (err){
-            response.status = 500;
+            response.status = process.env.SERVER_ERROR;
             response.message = err;
         } else {
             response.message = updatedCountry;
@@ -39,7 +39,7 @@ module.exports.foodsgetAll = function(req,res){
 
     Country.findById(countryId).select("foods").exec(function(err, country){
         console.log("List of country foods",country);
-        res.status(200).json(country.foods);
+        res.status(process.env.SUCCESS).json(country.foods);
     });
 };
 
@@ -50,7 +50,7 @@ module.exports.foodGetOne = function(req,res){
     Country.findById(countryId).select("foods").exec(function(err,country){
        const food = country.foods.id(foodId);
        console.log(food);
-       res.status(200).json(food);
+       res.status(process.env.SUCCESS).json(food);
    });
 };
 
@@ -60,15 +60,15 @@ module.exports.foodAddOne = function (req, res) {
     const countryId = req.params.countryId;
     Country.findById(countryId).exec(function(err, country){
         const response = {
-            status: 204,
+            status: process.env.SUCCESS,
             message: country
         }
         if (err){
-            response.status = 500,
+            response.status = process.env.SERVER_ERROR,
             response.message = err;
         } else if (!country){
             console.log("Error ading food");
-            response.status = 404,
+            response.status = process.env.NOT_FOUND,
             response.message = {"message": "country ID not found"};
         } 
         if (country) {
@@ -90,15 +90,15 @@ module.exports.foodFullUpdateOne = function(req, res){
     
     Country.findById(countryId).exec(function(err, country){
         const response = {
-            status: 204,
+            status: process.env.SUCCESS,
             message: country
         }
         if (err) {
             console.log("country not updated");
-            response.status = 500;
+            response.status = process.env.SERVER_ERROR;
             response.message = err;
         } else if (!country){
-            response.status = 404;
+            response.status = process.env.NOT_FOUND;
             response.message = { "message": "country not found" }
         } if (country) {
             const food = country.foods.id(foodId);
@@ -115,29 +115,28 @@ module.exports.foodFullUpdateOne = function(req, res){
 
                 country.save(function(err, updatedCountry){
                     const response = {
-                        status : 204,
+                        status : process.env.SUCCESS,
                         message : updatedCountry
                     }
                     if(err){
-                        response.status = 500;
+                        response.status = process.env.SERVER_ERROR;
                         response.message = err;
                     }
-                    res.status(response.status).json(response.message);
+                    
+                    
     
                 })
             }else {
-                res.status(404).json({"messag": "Food not found."});
+                response.status = process.env.NOT_FOUND;
+                response.message = {"messag": "Food not found."};
+               
 
             }
-
-
-            //ph
            
             
-
-
             
         }
+        res.status(response.status).json(response.message);
     })
 }
 
@@ -151,15 +150,15 @@ module.exports.foodDeleteOne = function(req, res){
     const foodId = req.params.foodId;
     Country.findById(countryId).exec(function(err, country){
         const response = {
-            status: 204,
+            status: process.env.SUCCESS,
             message: country
         }
         if (err) {
             console.log("food not deleted");
-            response.status = 500;
+            response.status = process.env.SERVER_ERROR;
             response.message = err;
         } else if (!country){
-            response.status = 404;
+            response.status = process.env.NOT_FOUND;
             response.message = { "message": "Publisher not found" }
         } 
         if (country) {
@@ -172,21 +171,22 @@ module.exports.foodDeleteOne = function(req, res){
     
                 country.save(function(err, updatedCountry){
                     const response = {
-                        status : 204,
+                        status : process.env.SUCCESS,
                         message : updatedCountry
                     }
                     if(err){
-                        response.status = 500;
+                        response.status = process.env.SERVER_ERROR;
                         response.message = err;
                     }
-    
-                    res.status(response.status).json(response.message);
+                    
                 });
             }else {
-                res.status(400).json({"message" : "food not found"});
+                response.status = process.env.NOT_FOUND;
+                response.message = {"message" : "food not found"};
+               
 
             }
         }
-        //res.status(response.status).json(response.message);
+        res.status(response.status).json(response.message);
     })
 };
