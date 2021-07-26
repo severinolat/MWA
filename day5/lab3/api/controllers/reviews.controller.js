@@ -117,33 +117,45 @@ module.exports.reviewFullUpdateOne = function(req, res){
             response.message = { "message": "game not found" }
         } if (game) {
            
-            game.review.name = req.body.name;
-            game.review.review = req.body.review;
-            game.review.date = req.body.date;
+            const review = game.reviews.id(reviewId);
+            if(review){
+                const reviewIndex = game.reviews.indexOf(review);
 
-            game.save(function(err, updateGame){
-                const response = {
-                    status: 204,
-                    message: updateGame
+                game.reviews[reviewIndex] = {
+                    _id : review._id,
+                    name: req.body.name,
+                    review: req.body.review,
+                    date: req.body.date
+                    
                 }
-                if (err){
-                    response.status = 500;
-                    response.message = err;
-                } else {
-                   
-                    response.message = updateGame;
-                }
-                res.status(response.status).json(response.message);
 
-    })
+                game.save(function(err, updatedGame){
+                    const response = {
+                        status : 204,
+                        message : updatedGame
+                    }
+                    if(err){
+                        response.status = 500;
+                        response.message = err;
+                    }
+                    res.status(response.status).json(response.message);
+    
+                })
+            }else {
+                res.status(404).json({"messag": "Review not found."});
+
+            }
         }
     })
 }
+
+
 
 module.exports.reviewDeleteOne = function(req, res){
     console.log("Delete request received");
    
     const gameId = req.params.gameId;
+    const reviewId = req.params.reviewId;
     
     Game.findById(gameId).exec(function(err, game){
         const response = {
@@ -159,17 +171,32 @@ module.exports.reviewDeleteOne = function(req, res){
             response.message = { "message": "Publisher not found" }
         } 
         if (game) {
-            game.review.remove();
-            game.save(function (err, deletedGame) {
-                if (err) {
-                    console.log("Review not updated");
-                    response.status = 500;
-                    response.message = { "message": "Review not updated" }
-                } else {
-                    response.message = deletedGame
-                }
-            })
+            const review = game.reviews.id(reviewId);
+
+            if(review){
+                const reviewIndx = game.reviews.indexOf(review);
+
+                game.reviews.splice(reviewIndx, 1);
+    
+                game.save(function(err, updatedGame){
+                    const response = {
+                        status : 204,
+                        message : updatedGame
+                    }
+                    if(err){
+                        response.status = 500;
+                        response.message = err;
+                    }
+                   
+                    res.status(response.status).json(response.message);
+                });
+            }else {
+                res.status(400).json({"message" : "Review not found"});
+
+            }
         }
         res.status(response.status).json(response.message);
     })
 }
+
+
