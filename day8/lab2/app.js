@@ -16,6 +16,7 @@ app.use(function(req,res,next){
     next();
 })
 
+app.use("/node_modules", express.static(path.join(__dirname,"node_modules")));
 app.use(express.static(path.join(__dirname, process.env.PUBLIC_FOLDER)));
 
 app.use(express.urlencoded({extended:false}));
