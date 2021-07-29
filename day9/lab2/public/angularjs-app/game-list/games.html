@@ -1,0 +1,37 @@
+<h1>Hello </h1>
+
+<ul>
+    <li ng-repeat="game in vm.games">
+        
+        <a href="/#!/game/{{game._id}}">{{game.title}}</a>
+    </li>
+</ul>
+
+<form name= vm.gameForm ng-submit="vm.addGame()">
+    To add a new game please fill in the field below: <br/>
+    Title:<input type = "text" name ="title" required ng-model="vm.formGame.title" style ="color: black;"/><br/> 
+
+    Price:<input type = "number" name ="price"  ng-model="vm.formGame.price" style ="color: black;"/><br/> 
+
+    year:<input type = "number" name ="year"  ng-model="vm.formGame.year" style ="color: black;"/><br/> 
+
+    Rating:<input type = "number" name ="rate" pattern="[1-5]"  ng-model="vm.formGame.rate" style ="color: black;"/>
+        <span ng-if="vm.gameForm.rate.$dirty && vm.gameForm.rate.$invalid">
+            The rate must be a number between 1-5
+        </span><br/>     
+
+    Minimun Players:<input type = "number" name ="minPlayers" pattern="[1-9][0-9]?"  ng-model="vm.formGame.minPlayers" style ="color: black;"/><br/> 
+    <span ng-if="vm.gameForm.minPlayers.$dirty && vm.gameForm.minPlayers.$invalid">
+        The rate must be a number between 1-5
+    </span><br/>     
+    
+    Maximun Players:<input type = "number" name ="maxPlayers" pattern="[1-9][0-9]?"  ng-model="vm.formGame.maxPlayers" style ="color: black;"/><br/> 
+    <span ng-if="vm.gameForm.maxPlayers.$dirty && vm.gameForm.maxPlayers.$invalid">
+        The rate must be a number between 1-5
+    </span><br/>     
+    Minimun Age:<input type = "number" name ="minAge"  ng-model="vm.formGame.minAge" style ="color: black;"/><br/> 
+   
+    Designer Name:<input type = "text" name ="designer"  ng-model="vm.formGame.designer" style ="color: black;"/><br/> 
+    <button type="submit" class="btn-success">Add Game</button> <br/>
+
+</form>
