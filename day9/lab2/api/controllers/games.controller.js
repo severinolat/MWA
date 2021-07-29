@@ -35,10 +35,8 @@ module.exports.gamesGetAll = function(req, res){
     
 
     let count = 5;
-    //help me say fisrt etc and from where start
     let offset = 0;
 
-    //everythings in query is string so we need to convert to number with parseInt
     if(req.query && req.query.count){
         count = parseInt(req.query.count,10) ;
     }
@@ -50,26 +48,7 @@ module.exports.gamesGetAll = function(req, res){
         res.status(400).json({message:"QueryString offset and count should be a number"});
         return;
     }
-    //Using mongodb driver
-    // // const pageGames = gamesData.slice(offset, offset + count);
-    // const db = dbConnection.get();
-    // const collection = db.collection("games");
-    // // const docs = collection.find({});
-    // console.log(db);
-
-    // collection.find().skip(offset).limit(count).toArray(function(err, games){
-    //     console.log(games);
-    //     res.status(200).json(games);
-    // });
-     
-    // res.status(200).json(gamesData);
-
-    //using mongoose
-    /*Game.find().exec(function(err,games){
-        console.log("GetOne games");
-        res.status(200).json(games);
-
-    });*/
+   
     Game.find().skip(offset).limit(count).exec(function(err, games) {
         if(err){
             console.log("Error finding games");
@@ -167,7 +146,6 @@ module.exports.gamesAddOne = function(req,res){
             if(response.status !== 204){
                 res.status(response.status).json(response.message);
             } else{
-                //this is where we update the game
                 game.title =  req.body.title;
                 game.year =  parseInt(req.body.year);
                 game.rate = parseInt(req.body.rate),
@@ -219,7 +197,6 @@ module.exports.gamesAddOne = function(req,res){
                 console.log("her2",response.status);
                 res.status(response.status).json(response.message);
             } else{
-                //this is where we update the game
                 
                 if(game.title){game.title =  req.body.title;}
                 console.log("here",req.body.title);

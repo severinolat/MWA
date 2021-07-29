@@ -9,5 +9,13 @@ function config($routeProvider){
         templateUrl:"angularjs-app/country-display/country.html",
         controller:"CountryController",
         controllerAs:"vm"
+    }).when("/deleteCountry/:id", {
+        templateUrl:"angularjs-app/country-delete/country-delete.html",
+        controller : "CountryDeleteController",
+        controllerAs: "vm"
+    }).when("/editCountry/:id", {
+        templateUrl:"angularjs-app/country-edit/country-edit.html",
+        controller : "CountryEditController",
+        controllerAs: "vm"
     })
 }

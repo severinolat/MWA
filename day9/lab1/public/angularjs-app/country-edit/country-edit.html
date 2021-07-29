@@ -1,0 +1,9 @@
+<form name= vm.countryForm ng-submit="vm.addCountry()">
+    Edit your country in the field below: {{vm.country.name}} <br/>
+    Name:<input type = "text" name ="name" ng-value="vm.country.name" required ng-model="vm.formCountry.name" style ="color: black;"/><br/> 
+
+    Population:<input type = "number" name ="price" ng-value="vm.country.population" ng-model="vm.formCountry.population" style ="color: black;"/><br/> 
+   
+    <button type="submit" class="btn-success">Save Country</button> <br/>
+
+</form>
