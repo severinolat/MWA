@@ -1,0 +1,42 @@
+<h2>Job list <h2> 
+    <!-- <game-rating></game-rating> -->
+</p></h1>
+
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Salary</th>
+      <th scope="col">Post date</th>
+      <th scope="col">Action</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr ng-repeat="job in vm.jobs" class="table-active">
+      <td>{{job.title}}</td>
+      <td>{{job.salary | currency }}</td>
+      <td>{{job.postdate | date}}</td>
+      <td><a href="/#!/job/{{job._id}}">Details</a></td>
+
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<form name= vm.jobForm ng-submit="vm.addJob()">
+    To add a new job please fill in the field below: <br/>
+    title:<input type = "text" name ="name" required ng-model="vm.formJob.title" style ="color: black;"/><br/> 
+
+    salary:<input type = "number" name ="salary"  ng-model="vm.formJob.salary" style ="color: black;"/><br/> 
+
+    Description: <textarea  name="description" rows="3" required ng-model="vm.formJob.description" style ="color: black;"></textarea>
+   
+    <button type="submit" class="btn-success">Add Job</button> <br/>
+
+</form>
