@@ -14,6 +14,7 @@ router.route("/jobs")
     .post(controllerJob.jobsAddOne);
 
 router.route("/jobs/:jobId")
+    .get(controllerJob.jobgetOne)
     .put(controllerJob.jobsFullUpdateOne)
     .patch(controllerJob.jobsPartialUpdateOne)   
     .delete(controllerJob.jobDeleteOne)

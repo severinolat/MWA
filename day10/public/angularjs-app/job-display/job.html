@@ -1,0 +1,25 @@
+<h2>Job details <h2> 
+    <!-- <game-rating></game-rating> -->
+</p></h1>
+
+<p>
+    Title:  {{vm.job.title}} <br/>
+
+    Salary:  {{vm.job.salary | currency}} <br/>
+
+    Description:  {{vm.job.description}} <br/>
+
+    Post date:  {{vm.job.postdate | date}} <br/>
+    
+
+    Skills: <ul>
+        <li ng-repeat="skill in vm.job.skills">
+            
+            {{skill.name}}
+        </li>
+    </ul>
+    <br/>
+
+   
+
+</p>

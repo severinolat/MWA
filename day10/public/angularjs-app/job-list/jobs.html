@@ -4,7 +4,7 @@
 
 
 
-<table class="table table-hover">
+<table class="table table-data">
   <thead>
     <tr>
       <th scope="col">Title</th>
@@ -17,7 +17,7 @@
   </thead>
   <tbody>
 
-    <tr ng-repeat="job in vm.jobs" class="table-active">
+    <tr ng-repeat="job in vm.jobs">
       <td>{{job.title}}</td>
       <td>{{job.salary | currency }}</td>
       <td>{{job.postdate | date}}</td>
@@ -29,13 +29,13 @@
 </table>
 
 
-<form name= vm.jobForm ng-submit="vm.addJob()">
+<form class="form-group" name= vm.jobForm ng-submit="vm.addJob()">
     To add a new job please fill in the field below: <br/>
-    title:<input type = "text" name ="name" required ng-model="vm.formJob.title" style ="color: black;"/><br/> 
+    title:<input class="form-label mt-4" type = "text" name ="name" required ng-model="vm.formJob.title" style ="color: black;"/><br/> 
 
-    salary:<input type = "number" name ="salary"  ng-model="vm.formJob.salary" style ="color: black;"/><br/> 
+    salary:<input class="form-label mt-4" type = "number" name ="salary"  ng-model="vm.formJob.salary" style ="color: black;"/><br/> 
 
-    Description: <textarea  name="description" rows="3" required ng-model="vm.formJob.description" style ="color: black;"></textarea>
+    Description: <textarea  name="description" rows="3" required ng-model="vm.formJob.description" style ="color: black;"></textarea><br/>
    
     <button type="submit" class="btn-success">Add Job</button> <br/>
 
