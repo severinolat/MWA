@@ -18,3 +18,18 @@ body{
     height: 100px;
     background-color: white;
 }
+
+.container {
+    padding: 60px 0 0 0;
+}
+
+* {
+    font-size: 14px;
+    line-height: 1.428;
+ }
+ 
+ /* style.css */
+ * {
+    font-size: 16px;
+    line-height: 2;
+ }

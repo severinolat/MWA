@@ -2,6 +2,8 @@ const express = require("express");
 
 const controllerCountry = require("../controllers/country.controller");
 const controllerFood = require("../controllers/food.controller");
+const controllerUsers = require("../controllers/users.controller");
+
 
 const router = express.Router();
 
@@ -25,5 +27,10 @@ router.route("/countries/:countryId/foods/:foodId")
     .put(controllerFood.foodFullUpdateOne)
     .delete(controllerFood.foodDeleteOne);
 
+router.route("/users")
+    .post(controllerUsers.register);
+
+router.route("/login")
+    .post(controllerUsers.login);
 
 module.exports = router;

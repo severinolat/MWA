@@ -25,6 +25,9 @@ router.route("/games/:gameId/publishers/:publisherId")
 router.route("/users")
     .post(controllerUsers.register);
 
+router.route("/login")
+    .post(controllerUsers.login);
+
 // router.route("/games/:gameId/publisher")
 //     .get(controllerPublisher.publisherAddOne);
 

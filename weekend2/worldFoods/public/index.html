@@ -5,18 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>World Foods</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <link rel="stylesheet" href="css/custom.css"/>
 </head>
 <body>
    
     
-    <div ng-view>
-
+    <games-navigation></games-navigation>
+    <div class="container">
+        <div ng-view></div>
     </div>
+   
 
     <footer class="footer">
-        <div class="container">
             <p class="text-muted text-center">
                 <a href="https://compro.miu.edu/" target="_blanck">
                 <img src="./img/compro-web-logo-442x112.webp" height="60" alt="MIU Compro"/>
@@ -26,12 +29,14 @@
 
                 </small>
             </p>
-        </div>
     </footer>
 
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/angular-jwt/dist/angular-jwt.js"></script>
     <script src="angularjs-app/app.js"></script>
+
+    <script src="angularjs-app/usersFactory/users-factory.js"></script>
 
     <script src="angularjs-app/country-list/country-list-controller.js"></script>
     <script src="angularjs-app/countriesFactory/countries-factory.js"></script>
@@ -41,6 +46,14 @@
     <script src="angularjs-app/country-delete/country-delete-controller.js"></script>
 
     <script src="angularjs-app/country-edit/country-edit-controller.js"></script>
+
+    <script src="angularjs-app/directives/navigation/navigation.js"></script>
+
+    <script src="angularjs-app/register/register-controller.js"></script>
+    <script src="angularjs-app/login/login-controller.js"></script>
+    <script src="angularjs-app/authentification/auth-factory.js"></script>
+    <script src="angularjs-app/authentification/auth-interceptor.js"></script>
+
 
 </body>
 </html>

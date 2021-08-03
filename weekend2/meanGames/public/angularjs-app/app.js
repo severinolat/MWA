@@ -1,6 +1,8 @@
-angular.module("meanGames", ["ngRoute"]).config(config);
+angular.module("meanGames", ["ngRoute", "angular-jwt"]).config(config).run(run);
 
-function config($routeProvider){
+
+function config($routeProvider,$httpProvider){
+
     $routeProvider.when("/",{
         templateUrl:"angularjs-app/game-list/games.html",
         controller:"GamesController",
@@ -17,5 +19,18 @@ function config($routeProvider){
         templateUrl:"angularjs-app/game-edit/game-edit.html",
         controller : "GameEditController",
         controllerAs: "vm"
+    }).when("/register", {
+        templateUrl: "angularjs-app/register/register.html",
+        controller: "RegisterController",
+        controllerAs: "vm"
     })
+}
+
+function run($rootScope, $location, $window, AuthFactory) {
+    $rootScope.$on("$routeChangeStart", function(event, nextRoute, currentRoute) {
+        if (nextRoute.access !== undefined && nextRoute.access.restricted && !$window.sessionStorage.token && !AuthFactory.isLoggedIn) {
+            event.preventDefault(); // Do not go to that path
+            $location.path("/"); // Instead go to the root
+        }
+    });
 }

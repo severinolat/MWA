@@ -1,4 +1,4 @@
-angular.module("meanWordFoods", ["ngRoute"]).config(config);
+angular.module("meanWordFoods", ["ngRoute", "angular-jwt"]).config(config);
 
 function config($routeProvider){
     $routeProvider.when("/",{
@@ -16,6 +16,10 @@ function config($routeProvider){
     }).when("/editCountry/:id", {
         templateUrl:"angularjs-app/country-edit/country-edit.html",
         controller : "CountryEditController",
+        controllerAs: "vm"
+    }).when("/register", {
+        templateUrl: "angularjs-app/register/register.html",
+        controller: "RegisterController",
         controllerAs: "vm"
     })
 }
