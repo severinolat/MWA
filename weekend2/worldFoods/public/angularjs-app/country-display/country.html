@@ -1,0 +1,23 @@
+<h2>Country foods <h2> 
+    <!-- <game-rating></game-rating> -->
+</p></h1>
+
+<p>
+    Country:  {{vm.country.name}} <br/>
+
+    Population:  {{vm.country.population | number:2}} <br/>
+
+    Foods: <ul>
+        <li ng-repeat="food in vm.country.foods">
+            
+            {{food.name}}
+        </li>
+    </ul>
+    <br/>
+
+   
+
+</p>
+
+<a href="/#!/deleteCountry/{{vm.country._id}}">Delete</a>
+<a href="/#!/editCountry/{{vm.country._id}}">Edit</a>

@@ -1,0 +1,18 @@
+<h1>World Food Home page</h1>
+<ul>
+    <li ng-repeat="country in vm.countries">
+        
+        <a href="/#!/country/{{country._id}}">{{country.name}}</a>
+    </li>
+</ul>
+
+
+<form name= vm.countryForm ng-submit="vm.addCountry()">
+    To add a new country please fill in the field below: <br/>
+    Name:<input type = "text" name ="name" required ng-model="vm.formCountry.name" style ="color: black;"/><br/> 
+
+    Population:<input type = "number" name ="price"  ng-model="vm.formCountry.population" style ="color: black;"/><br/> 
+   
+    <button type="submit" class="btn-success">Add Country</button> <br/>
+
+</form>
