@@ -1,0 +1,19 @@
+<h1>Information about game: <p> {{vm.game.title}}
+    <!-- <game-rating></game-rating> -->
+</p></h1>
+
+<p>
+    Price:  {{vm.game.price | currency}} <br/>
+    Year: {{vm.game.year}} <br/>
+    Minimun Players: {{vm.game.minPlayers}} <br/>
+    Maximun Players: {{vm.game.maxPlayers}} <br/>
+    Minimun Age: {{vm.game.minAge}} <br/>
+
+
+    <!-- <a href="/#!/game/{{game._id}}">{{game.title}}</a> -->
+
+    <a href="/#!/deleteGame/{{vm.game._id}}">Delete</a>
+    <a href="/#!/editGame/{{vm.game._id}}">Edit</a>
+
+
+</p>
