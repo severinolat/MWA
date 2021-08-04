@@ -7,7 +7,7 @@
 </ul>
 
 
-<form name= vm.countryForm ng-submit="vm.addCountry()">
+<form ng-show="vm.isLoggedIn()" name= vm.countryForm ng-submit="vm.addCountry()">
     To add a new country please fill in the field below: <br/>
     Name:<input type = "text" name ="name" required ng-model="vm.formCountry.name" style ="color: black;"/><br/> 
 

@@ -6,7 +6,7 @@
     </li>
 </ul>
 
-<form name= vm.gameForm ng-submit="vm.addGame()">
+<form ng-show="vm.isLoggedIn()"  name= vm.gameForm ng-submit="vm.addGame()">
     To add a new game please fill in the field below: <br/>
     Title:<input type = "text" name ="title" required ng-model="vm.formGame.title" style ="color: black;"/><br/> 
 

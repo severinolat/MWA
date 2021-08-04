@@ -1,12 +1,15 @@
 angular.module("meanWordFoods").controller("CountriesController", CountriesController);
 
-    function CountriesController(CountriesFactory){
+    function CountriesController(CountriesFactory, AuthFactory){
         const vm = this;
         vm.title ="MEAN Foods";
         CountriesFactory.getAllCountries().then(function(response){
             console.log("here",response);
             vm.countries = response;
         });
+        vm.isLoggedIn = function() {
+            return AuthFactory.isLoggedIn;
+        }
 
         vm.formCountry = {}
         vm.addCountry = function(){
