@@ -1,0 +1,12 @@
+<h1>Information about game: <p> {{game.title}}
+    <app-game-ratting [rating]="game.rate"></app-game-ratting>
+</p></h1>
+
+<p>
+    Price:  {{game.price | currency}} <br/>
+
+    Minimun Players: {{game.minPlayers}} <br/>
+    Maximun Players: {{game.maxPlayers}} <br/>
+    Minimun Age: {{game.minAge}} <br/>
+
+</p>

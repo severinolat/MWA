@@ -1,0 +1,28 @@
+
+<ul>
+    <li *ngFor="let game of games">
+       <a routerLink="/game/{{game._id}}"> Title :{{game.title}}</a> 
+       
+        
+    </li>
+</ul>
+
+
+<!-- Template-driven form -->
+This is my template driven form <br/>
+<form (ngSubmit)="save()">
+    Please enter title: <input type="text" [(ngModel)]="newGame.title" name="title" /><br/>
+    Please enter price: <input type="text" [(ngModel)]="newGame.price" name="price" /><br/>
+   
+    <button type="submit">Save</button>
+</form>
+
+
+<!-- Reactive form -->
+This is my  reactive form<br/>
+<form [formGroup]="gameForm" (ngSubmit)="gameSave()">
+    Please enter title: <input type="text" formControlName="title" name="title" /><br/>
+    Please enter price: <input type="text" formControlName="price" name="price" /><br/>
+   
+    <button type="submit">Save</button>
+</form>

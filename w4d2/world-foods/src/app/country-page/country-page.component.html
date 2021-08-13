@@ -1,0 +1,18 @@
+<h2>Country details and foods</h2>
+
+
+    Country:  {{country.name}} <br/>
+
+    Population:  {{country.population | number}} <br/>
+
+    
+
+    Foods: <ul>
+        <li *ngFor="let food of country.foods">
+            
+            {{food.name}}
+        </li>
+    </ul>
+    <br/>
+
+   
